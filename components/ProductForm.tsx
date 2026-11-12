@@ -75,60 +75,65 @@ export default function ProductForm({ initial }: { initial?: ProductDTO }) {
   }
 
   return (
-    <form onSubmit={onSubmit} className="max-w-2xl space-y-4 rounded-lg bg-white p-6 shadow">
-      {error && <p className="rounded bg-red-50 p-2 text-sm text-red-600">{error}</p>}
+    <form onSubmit={onSubmit} className="max-w-2xl space-y-5 rounded-[24px] border border-slate-200 bg-white p-6 shadow-[0_20px_40px_rgba(15,23,42,0.08)]">
+      {error && <p className="rounded-2xl border border-red-200 bg-red-50 p-3 text-sm text-red-700">{error}</p>}
 
-      <label className="block space-y-1 text-sm font-medium">
-        Name
-        <input className={inputClass} value={form.name} onChange={update("name")} required />
-      </label>
+      <div className="grid gap-5 md:grid-cols-2">
+        <label className="block space-y-2 text-sm font-medium text-slate-700 md:col-span-2">
+          Name
+          <input className={`${inputClass} border-slate-200 bg-slate-50 focus:border-blue-500 focus:bg-white focus:soft-ring`} value={form.name} onChange={update("name")} required />
+        </label>
 
-      <label className="block space-y-1 text-sm font-medium">
-        SKU
-        <input className={inputClass} value={form.sku} onChange={update("sku")} required />
-      </label>
+        <label className="block space-y-2 text-sm font-medium text-slate-700 md:col-span-2">
+          SKU
+          <input className={`${inputClass} border-slate-200 bg-slate-50 focus:border-blue-500 focus:bg-white focus:soft-ring`} value={form.sku} onChange={update("sku")} required />
+        </label>
 
-      <label className="block space-y-1 text-sm font-medium">
-        Description
-        <textarea className={inputClass} value={form.description} onChange={update("description")} rows={3} />
-      </label>
+        <label className="block space-y-2 text-sm font-medium text-slate-700 md:col-span-2">
+          Description
+          <textarea className={`${inputClass} border-slate-200 bg-slate-50 focus:border-blue-500 focus:bg-white focus:soft-ring`} value={form.description} onChange={update("description")} rows={3} />
+        </label>
 
-      <label className="block space-y-1 text-sm font-medium">
-        Quantity on hand
-        <input
-          className={inputClass}
-          type="number"
-          min="0"
-          step="1"
-          value={form.quantityOnHand}
-          onChange={update("quantityOnHand")}
-          required
-        />
-      </label>
+        <label className="block space-y-2 text-sm font-medium text-slate-700">
+          Quantity on hand
+          <input
+            className={`${inputClass} border-slate-200 bg-slate-50 focus:border-blue-500 focus:bg-white focus:soft-ring`}
+            type="number"
+            min="0"
+            step="1"
+            value={form.quantityOnHand}
+            onChange={update("quantityOnHand")}
+            required
+          />
+        </label>
 
-      <label className="block space-y-1 text-sm font-medium">
-        Cost price
-        <input className={inputClass} type="number" min="0" step="0.01" value={form.costPrice} onChange={update("costPrice")} />
-      </label>
+        <label className="block space-y-2 text-sm font-medium text-slate-700">
+          Cost price
+          <input className={`${inputClass} border-slate-200 bg-slate-50 focus:border-blue-500 focus:bg-white focus:soft-ring`} type="number" min="0" step="0.01" value={form.costPrice} onChange={update("costPrice")} />
+        </label>
 
-      <label className="block space-y-1 text-sm font-medium">
-        Selling price
-        <input className={inputClass} type="number" min="0" step="0.01" value={form.sellingPrice} onChange={update("sellingPrice")} />
-      </label>
+        <label className="block space-y-2 text-sm font-medium text-slate-700">
+          Selling price
+          <input className={`${inputClass} border-slate-200 bg-slate-50 focus:border-blue-500 focus:bg-white focus:soft-ring`} type="number" min="0" step="0.01" value={form.sellingPrice} onChange={update("sellingPrice")} />
+        </label>
 
-      <label className="block space-y-1 text-sm font-medium">
-        Low stock threshold
-        <input
-          className={inputClass}
-          type="number"
-          min="0"
-          step="1"
-          value={form.lowStockThreshold}
-          onChange={update("lowStockThreshold")}
-        />
-      </label>
+        <label className="block space-y-2 text-sm font-medium text-slate-700">
+          Low stock threshold
+          <input
+            className={`${inputClass} border-slate-200 bg-slate-50 focus:border-blue-500 focus:bg-white focus:soft-ring`}
+            type="number"
+            min="0"
+            step="1"
+            value={form.lowStockThreshold}
+            onChange={update("lowStockThreshold")}
+          />
+        </label>
+      </div>
 
-      <button disabled={loading} className="rounded bg-blue-600 px-4 py-2 text-sm text-white disabled:opacity-50">
+      <button
+        disabled={loading}
+        className="inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-blue-600 to-cyan-500 px-5 py-2.5 text-sm font-semibold text-white shadow-lg shadow-blue-500/20 transition hover:opacity-95 disabled:cursor-not-allowed disabled:opacity-60"
+      >
         {loading ? "Saving..." : initial ? "Save changes" : "Add product"}
       </button>
     </form>
