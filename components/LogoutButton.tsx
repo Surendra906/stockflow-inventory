@@ -28,7 +28,7 @@ export default function LogoutButton() {
     <>
       <button
         onClick={logout}
-        className="mt-4 rounded bg-gray-800 px-3 py-1 text-white"
+        className="rounded bg-gray-800 px-3 py-1 text-white"
       >
         Log out
       </button>
